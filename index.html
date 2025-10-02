@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Aniversario</title>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>"
 <!-- Fuente cursiva elegante -->
+ <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&family=Playfair+Display&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,23 +15,30 @@
 
 <section class="welcome">
     <!-- Flores izquierda -->
-    <img src="flor1.png" class="flor flor-left1" alt="flor izquierda">
+    <img src="lat1.png" class="flor flor-left1" alt="flor izquierda">
     <img src="flor2.png" class="flor flor-left2" alt="flor izquierda">
     <img src="flor3.png" class="flor flor-left3" alt="flor izquierda">
     <img src="flor4.png" class="flor flor-left4" alt="flor izquierda">
 
     <!-- Flores derecha -->
-    <img src="flor5.png" class="flor flor-right1" alt="flor derecha">
+    <img src="lat1.1.png" class="flor flor-right1" alt="flor derecha">
     <img src="flor6.png" class="flor flor-right2" alt="flor derecha">
     <img src="flor7.png" class="flor flor-right3" alt="flor derecha">
     <img src="flor8.png" class="flor flor-right4" alt="flor derecha">
 
-    <h1>Aniversario</h1>
-   
+    <h1 class="special">Aniversario </h1>
+   <img src="center1.png" alt="Foto central" class="main-photo">
     
 </section>
 
-<section class="countdown">
+<section class="main-photo-section ">
+    <img src="mick1.jpg" alt="Foto principal" class="main-photo-principal">
+</section>
+
+
+
+
+<section class="countdown fade-up">
     <h2>Cuenta Regresiva</h2>
     <div id="contador">
         <span id="dias">0</span>d :
@@ -39,19 +48,74 @@
     </div>
 </section>
 
-<section class="rsvp">
-    <h2>Confirma tu asistencia</h2>
-    <p>Tu nombre:</p>
-    <input type="text" id="nombre" placeholder="Escribe tu nombre">
-    <p>¿Asistirás?</p>
-    <select id="asistira">
-        <option value="Sí">Sí</option>
-        <option value="No">No</option>
-    </select>
-    <button id="rsvpBtn">Confirmar Asistencia</button>
-    <p id="confirmation" class="hidden">¡Gracias! Tu asistencia ha sido registrada 💖</p>
+<section class="gallery fade-up">
+  <h2>Recuerdos</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="mask1.jpg" alt="Foto 1"></div>
+      <div class="swiper-slide"><img src="mask2.jpg" alt="Foto 2"></div>
+      <div class="swiper-slide"><img src="mick1.jpg" alt="Foto 3"></div>
+ 
+
+    </div>
+    <!-- Paginación (puntitos) -->
+    <div class="swiper-pagination fade-up"></div>
+  </div>
 </section>
 
+
+
+<section class="rsvp fade-up">
+    <h2 class="rsvp-titulo">Confirma tu asistencia</h2>
+    <div class="rsvp-buttons">
+        <button id="asistire" onclick="confirmar(true)">Sí, asistiré</button>
+        <button id="no-asistire" onclick="confirmar(false)">No podré asistir</button>
+    </div>
+    <p class="confirmacion hidden" id="mensaje-confirmacion"></p>
+</section>
+
+
 <script src="script.js"></script>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,                 // 🔄 infinito
+    autoplay: {
+      delay: 3000,              // 3s por foto
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,           // una foto a la vez
+    spaceBetween: 10,
+  });
+
+const fadeElements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting && entry.boundingClientRect.top > 0){
+            // Solo si el elemento está entrando desde abajo
+            entry.target.classList.add('visible');
+        } else {
+            entry.target.classList.remove('visible');
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+fadeElements.forEach(el => observer.observe(el));
+
+
+
+</script>
+
 </body>
 </html>
