@@ -56,11 +56,11 @@ h1, h2, p {
 .welcome h1 {
     font-size: 3em;
     color: #808080; /* plateado oscuro */
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .countdown h2, .rsvp h2 {
-    font-size: 2em;
+    font-size: 3em;
     margin-bottom: 20px;
     color: #808080; /* plateado medio */
 }
@@ -118,13 +118,13 @@ button:hover {
 
 /* Flores izquierda */
 .flor-left1 { left: 20px; top: 10vh; }
-.flor-left2 { left: 15px; top: 35vh; }
+.flor-left2 { left: 15px; top: 45vh; }
 .flor-left3 { left: 10px; top: 60vh; }
 .flor-left4 { left: 15px; top: 85vh; }
 
 /* Flores derecha */
 .flor-right1 { right: 20px; top: 10vh; }
-.flor-right2 { right: 15px; top: 35vh; }
+.flor-right2 { right: 15px; top: 45vh; }
 .flor-right3 { right: 10px; top: 60vh; }
 .flor-right4 { right: 15px; top: 85vh; }
 
