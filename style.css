@@ -1,276 +1,118 @@
 body {
-    margin: 0;
-    font-family: 'Great Vibes', cursive;
-    font-style: italic;
-    background: linear-gradient(135deg, white); /* plateado */
-    overflow-x: hidden;
-    color: #333;
-    scroll-behavior: smooth;
-}
-.main-photo {
-    margin-top: 10px;
-    width: 40%;              /* ocupa 80% del ancho */
-    max-width: 400px;        /* nunca pasa de 400px */
-    height: auto;
-    border-radius: 15px;     /* bordes redondeados */
-    display: block;
+  margin: 0;
+  font-family: 'Great Vibes', cursive;
+  font-style: italic;
+  background: linear-gradient(135deg, white);
+  overflow-x: hidden;
+  color: #333;
+  scroll-behavior: smooth;
+  text-align: center;
 }
 
-.main-photo-principal {
-    width: 80%;              /* ocupa 80% del ancho */
-    max-width: 400px;        /* tamaño máximo */
-    height: auto;
-    border-radius: 20px;     /* bordes redondeados */
-    border: 5px solid silver; /* borde color plata */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    display: block;
-    margin: 20px auto;       /* centrada y con espacio arriba/abajo */
-    object-fit: cover;
-}
-.nombre-pareja, .fecha-evento {
-    line-height: 1.2; /* ajusta según convenga */
-    margin: 5px 0;    /* reduce margen superior e inferior */
-    font-size: 2em;   /* puedes ajustar tamaño */
+/* Título principal */
+.titulo-principal {
+  position: relative;
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin: 20px 0;
+  color: #333;
 }
 
-
-section {
-    min-height: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    position: relative;
+.titulo-principal .titulo-texto {
+  display: inline-block;
+  padding: 0 40px;
 }
 
-/* Títulos y textos */
-h1, h2, p {
-    font-family: 'Great Vibes', cursive;
-    font-style: italic;
+.flores-deco {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: auto;
 }
 
-.special {
-    font-family: 'Times New Roman';
-    font-size: 20px;
-    font-style: italic;
-    color: silver;
+.flores-deco.izquierda { left: 0; }
+.flores-deco.derecha { right: 0; }
+
+/* Nombres */
+.nombres {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  margin: 10px 0;
+  color: #333;
 }
 
 
-.welcome h1 {
-    font-size: 3em;
-    color: #808080; /* plateado oscuro */
-    margin-bottom: 0px;
+/* Imagen principal */
+.imagen-principal img {
+  width: 60%;
+  max-width: 400px;
+  border-radius: 20px;
+  border: 4px solid silver;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
 }
 
-.countdown h2, .rsvp h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #808080; /* plateado medio */
+/* Fecha */
+.fecha {
+  font-size: 14px;
+  line-height: 1.1;
+  text-align: center;
+  margin: 10px auto;
 }
 
-#contador {
-    font-size: 2em;
-    font-weight: bold;
-    color: #505050; /* plateado oscuro */
-}
-
-input, select {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    border-radius: 8px;
-    border: 1px solid #999;
-    font-size: 18px; /* un poco más grande */
-    background-color: #f0f0f0;
-    color: #333;
-    font-family: 'Great Vibes', cursive;
-    font-style: italic;
-}
-
-button {
-    background-color: #a0a0a0; /* plateado */
-    color: white;
-    border: none;
-    padding: 14px 22px; /* más espacio para pulsar en móvil */
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Great Vibes', cursive;
-    font-style: italic;
-}
-
-button:hover {
-    background-color: #888888; /* plateado más oscuro */
-}
-
-.hidden {
-    display: none;
-    color: green;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-/* Flores decorativas distribuidas equitativamente */
-.flor {
-    position: absolute;
-    width: 100px;
-    opacity: 0.8;
-    z-index: 0;
-}
-
-/* Flores izquierda */
-.flor-left1 { left: 20px; top: 10vh; }
-.flor-left2 { left: 15px; top: 45vh; }
-.flor-left3 { left: 10px; top: 90vh; }
-.flor-left4 { left: 15px; top: 120vh; }
-
-/* Flores derecha */
-.flor-right1 { right: 20px; top: 10vh; }
-.flor-right2 { right: 15px; top: 45vh; }
-.flor-right3 { right: 10px; top: 90vh; }
-.flor-right4 { right: 15px; top: 120vh; }
-
-/* 📱 Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-    .welcome h1 {
-        font-size: 2.2em;
-    }
-    .countdown h2, .rsvp h2 {
-        font-size: 1.6em;
-    }
-    p {
-        font-size: 1.2em;
-    }
-    #contador {
-        font-size: 1.8em;
-    }
-    input, select, button {
-        font-size: 16px;
-        width: 90%;
-    }
-}
-
-.gallery {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.gallery h2 {
-    font-size: 2em;
-    color: #808080;
-    margin-bottom: 20px;
-}
-
-.gallery {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.gallery h2 {
-    font-size: 2em;
-    color: #808080;
-    margin-bottom: 20px;
-}
-
-/* Swiper ajustado */
-.swiper {
-    width: 90%;
-    max-width: 700px;
-    height: 400px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Flechas */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #808080; /* plateado medio */
-}
-
-/* Paginación (puntitos) */
-.swiper-pagination-bullet {
-    background: #a0a0a0;
-    opacity: 0.7;
-}
-.swiper-pagination-bullet-active {
-    background: #505050;
-}
-
-.rsvp-titulo {
-    font-size: 2em;
-    color: #808080;
-    margin-bottom: 20px;
-}
-
-.rsvp-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 30px; /* espacio entre botones */
-    flex-wrap: wrap; /* en móviles, los botones se acomodan en vertical */
-}
-
-.rsvp-buttons button {
-    width: 150px;           /* tamaño fijo para los botones */
-    padding: 14px 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #a0a0a0;
-    color: white;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.rsvp-buttons button:hover {
-    background-color: #888888;
-}
-
-/* Mensaje de confirmación */
-.confirmacion {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4em;
-    color: green;
-    margin-top: 15px;
-}
-.fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.ubicacion {
-    text-align: center; /* centra el contenido dentro */
-    margin-top: 10px;
-}
-
+/* Botón de ubicación */
+.ubicacion { text-align: center; margin-top: 10px; }
 .ubicacion button {
-    background-color: silver;
-    color: #333;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block; /* asegura que respete el centrado */
+   font-family: 'Great Vibes', cursive; 
+  background-color: silver;
+  font-style: bold;
+  color: #333;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.ubicacion button:hover { background-color: #b0b0b0; }
+
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* Countdown */
+.countdown h2, .rsvp h2 { font-size: 3em; color: #808080; margin-bottom: 20px; }
+#contador { font-size: 2em; font-weight: bold; color: #505050; text-align: center; }
+
+/* Galería Swiper */
+.swiper { width: 90%; max-width: 700px; height: 400px; border-radius: 15px; overflow: hidden; margin: 0 auto; }
+.swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+.swiper-pagination-bullet { background: #a0a0a0; opacity: 0.7; }
+.swiper-pagination-bullet-active { background: #505050; }
+
+
+/* Ajustes móviles */
+@media (max-width: 768px){
+  .titulo-principal { font-size: 2.2rem; }
+  .nombres { font-size: 24px; }
+  .fecha { font-size: 20px; }
+  #contador { font-size: 1.8em; }
+  .countdown h2, .rsvp h2 { font-size: 1.6em; }
+  .rsvp-buttons button { width: 120px; font-size: 16px; }
 }
 
-.ubicacion button:hover {
-    background-color: #b0b0b0;
-}
 
+.contador-texto {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem; /* más grande para móvil */
+    text-align: center;
+    color: #505050; /* plateado oscuro */
+    margin-top: 10px;
+}

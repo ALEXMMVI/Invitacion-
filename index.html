@@ -5,60 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación de Aniversario</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>"
-<!-- Fuente cursiva elegante -->
- <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&family=Playfair+Display&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/countdown@2.6.0/countdown.min.js"></script>
+
 </head>
 <body>
 
+<!-- Título principal con flores laterales -->
 <section class="welcome">
-    <!-- Flores izquierda -->
-    <img src="lat1.png" class="flor flor-left1" alt="flor izquierda">
-    <img src="lat2.png" class="flor flor-left2" alt="flor izquierda">
-    <img src="lat1.png" class="flor flor-left3" alt="flor izquierda">
-    <img src="flor4.png" class="flor flor-left4" alt="flor izquierda">
-
-    <!-- Flores derecha -->
-    <img src="lat1.1.png" class="flor flor-right1" alt="flor derecha">
-    <img src="lat2.1.png" class="flor flor-right2" alt="flor derecha">
-    <img src="lat1.1.png" class="flor flor-right3" alt="flor derecha">
-    <img src="flor8.png" class="flor flor-right4" alt="flor derecha">
-
-    <h1 class="special">Aniversario </h1>
-    <h1 class="special">20 </h1>
-   <img src="center1.png" alt="Foto central" class="main-photo">
-    <h1 class="nombre-pareja" >Ana </h1>
-       <h1 class="nombre-pareja">&</h1>
-          <h1 class="nombre-pareja">Isaac </h1>
-</section>
-
-<section class="main-photo-section ">
-    <img src="mick1.jpg" alt="Foto principal" class="main-photo-principal">
+  <h1 class="titulo-principal">
+    <img src="lat1.png" class="flores-deco izquierda" alt="Flor izquierda">
+    <span class="titulo-texto">Aniversario</span>
+   
+    <img src="lat1.1.png" class="flores-deco derecha" alt="Flor derecha">
+  </h1>
+  <h2 class="titulo-principal">20</h2>
+  <!-- Nombres de los novios -->
+  <h2 class="titulo-principal">Ana & Isaac</h2>
 
 
-     <h1 class="fecha-evento fade-up" >Sabado </h1>
-      <h1 class="fecha-evento fade-up">20</h1>
-       <h1 class="fecha-evento fade-up">Diciembre</h1>
-</section>
+  <!-- Imagen principal -->
+  <div class="imagen-principal">
+    <img src="mick1.jpg" alt="Foto principal">
+  </div>
 
-<div class="ubicacion">
+  <!-- Fecha centrada -->
+  <h1 class="nombres fade-up">14 de Octubre 2025</h1>
+
+  <!-- Botón de ubicación -->
+  <div class="ubicacion fade-up">
     <button onclick="abrirUbicacion()">Ver ubicación del local</button>
-</div>
-
-
-
-<section class="countdown fade-up">
-    <h2>Cuenta Regresiva</h2>
-    <div id="contador">
-        <span id="dias">0</span>d :
-        <span id="horas">0</span>h :
-        <span id="minutos">0</span>m :
-        <span id="segundos">0</span>s
-    </div>
+  </div>
 </section>
 
+<!-- Cuenta regresiva -->
+<section class="countdown fade-up">
+  <h2>Cuenta Regresiva</h2>
+  <div id="contador" class="contador-texto"></div>
+</section>
+
+<!-- Galería de recuerdos -->
 <section class="gallery fade-up">
   <h2>Recuerdos</h2>
   <div class="swiper">
@@ -66,68 +54,62 @@
       <div class="swiper-slide"><img src="mask1.jpg" alt="Foto 1"></div>
       <div class="swiper-slide"><img src="mask2.jpg" alt="Foto 2"></div>
       <div class="swiper-slide"><img src="mick1.jpg" alt="Foto 3"></div>
- 
-
     </div>
-    <!-- Paginación (puntitos) -->
-    <div class="swiper-pagination fade-up"></div>
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
-
-
-<section class="rsvp fade-up">
-    <h2 class="rsvp-titulo">Confirma tu asistencia</h2>
-    <div class="rsvp-buttons">
-        <button id="asistire" onclick="confirmar(true)">Sí, asistiré</button>
-        <button id="no-asistire" onclick="confirmar(false)">No podré asistir</button>
-    </div>
-    <p class="confirmacion hidden" id="mensaje-confirmacion"></p>
-</section>
+<!-- Confirmación de asistencia -->
 
 
 <script src="script.js"></script>
-
 <script>
+  // Swiper
   const swiper = new Swiper('.swiper', {
-    loop: true,                 // 🔄 infinito
-    autoplay: {
-      delay: 3000,              // 3s por foto
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    slidesPerView: 1,           // una foto a la vez
-    spaceBetween: 10,
+    loop: true,
+    autoplay: { delay: 3000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    slidesPerView: 1,
+    spaceBetween: 10
   });
 
-const fadeElements = document.querySelectorAll('.fade-up');
-
-const observer = new IntersectionObserver((entries) => {
+  // Animación fade-up al scroll
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting && entry.boundingClientRect.top > 0){
-            // Solo si el elemento está entrando desde abajo
-            entry.target.classList.add('visible');
-        } else {
-            entry.target.classList.remove('visible');
-        }
+      if(entry.isIntersecting && entry.boundingClientRect.top > 0){
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
     });
-}, {
-    threshold: 0.2
-});
+  }, { threshold: 0.2 });
+  fadeElements.forEach(el => observer.observe(el));
 
-fadeElements.forEach(el => observer.observe(el));
-
-function abrirUbicacion() {
-    // Abre Google Maps con la dirección
+  // Abrir ubicación
+  function abrirUbicacion() {
     window.open("https://maps.app.goo.gl/QiC7heJn9QW47XhB6", "_blank");
+  }
+
+const fechaObjetivo = new Date("Dec 21, 2025 00:00:00");
+
+function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = countdown(ahora, fechaObjetivo, countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+
+    if (ahora >= fechaObjetivo) {
+        document.getElementById("contador").textContent = "¡Llegó el gran día!";
+    } else {
+        document.getElementById("contador").textContent =
+            `${diferencia.days}d : ${diferencia.hours}h : ${diferencia.minutes}m : ${diferencia.seconds}s`;
+    }
 }
+
+// Actualiza cada segundo
+actualizarContador();
+setInterval(actualizarContador, 1000);
+
+
 
 
 </script>

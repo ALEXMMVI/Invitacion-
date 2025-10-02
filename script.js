@@ -63,4 +63,5 @@ rsvpBtn.addEventListener('click', () => {
     mensaje.classList.remove('hidden');
 }
 
+
 });
