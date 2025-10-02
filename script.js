@@ -62,19 +62,5 @@ rsvpBtn.addEventListener('click', () => {
     }
     mensaje.classList.remove('hidden');
 }
-const faders = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // animación solo una vez
-        }
-    });
-}, { threshold: 0.2 }); // 20% del elemento visible
-
-faders.forEach(fader => {
-    observer.observe(fader);
-});
 
 });
