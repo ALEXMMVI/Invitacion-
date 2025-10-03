@@ -17,20 +17,25 @@
 
 <!-- Título principal con flores laterales -->
 <section class="welcome">
-  <h1 class="titulo-principal">
-    <img src="lat1.png" class="flores-deco izquierda" alt="Flor izquierda">
-    <span class="titulo-texto">Aniversario</span>
-   
-    <img src="lat1.1.png" class="flores-deco derecha" alt="Flor derecha">
-  </h1>
-
-
-  <p class=class="novios" style="font-family: 'Great Vibes', cursive; font-size:3.6rem; margin:10px 0;">25</p>
-
+ 
   
+    <p class="titulo-texto" style="font-family: 'Great Vibes',  cursive;
+    color:#fbf7ee; ;font-size:3.8rem; margin:10px 0;">Aniversario</p>
+   
+  
+ 
+
+
+  <p class=class="novios" style="font-family: 'Great Vibes', cursive;
+   color:#fbf7ee;font-size:3.6rem;; margin:10px 0;">25</p>
+
+ <div class="divisor">
+  <img src="title-Photoroom.png" alt="Divisor decorativo">
+</div>
 
   <!-- Nombres de los novios -->
-  <p class="novios" style="font-family: 'Great Vibes', cursive; font-size:3.6rem; margin:10px 0;">Ana & Isaac</p>
+  <p class="novios" style="font-family: 'Great Vibes', cursive;
+  color:#fbf7ee; font-size:3.6rem; margin:10px 0;">Ana & Isaac</p>
 
 
   <!-- Imagen principal -->
@@ -44,6 +49,12 @@
   <div class="mes">Diciembre</div>
    <div class="mes">2025</div>
 </div>
+
+
+<div class="divisor">
+  <img src="divisor1-Photoroom.png" alt="Divisor decorativo">
+</div>
+
 
  <!-- ESPACIO PARA UBICACIÓN POR ESCRITO -->
   
@@ -72,6 +83,11 @@
     <div class="swiper-pagination"></div>
   </div>
 </section>
+
+<div class="divisor">
+  <img src="divisor2-Photoroom.png" alt="Divisor decorativo">
+</div>
+
 <!-- Cuenta regresiva -->
 <section class="countdown">
   <h2>Cuenta Regresiva</h2>
@@ -98,7 +114,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </section>
 
-
+<div class="divisor">
+  <img src="divisor3-Photoroom.png" alt="Divisor decorativo">
+</div>
 
 
 <script src="script.js"></script>
@@ -183,7 +201,7 @@ window.addEventListener('resize', () => {
 });
 
 // Cargar imágenes de flores
-const floresImgsSrc = ['flor1.png','lat1.png','lat1.1.png','lat2.png'];
+const floresImgsSrc = ['flor1.png','leaf2.png','flor3.png','leaf3.png','flor2.png'];
 const floresImgs = floresImgsSrc.map(src => {
     const img = new Image();
     img.src = src;
@@ -197,8 +215,8 @@ class Flor {
     reset() {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height + Math.random() * 100;
-        this.size = 20 + Math.random() * 30;
-        this.speed = 0.5 + Math.random() * 1;
+        this.size = 20 + Math.random() * 50;
+        this.speed = 0.1 + Math.random() * 0.5;
         this.angle = Math.random() * Math.PI * 2;
         this.spin = 0.01 + Math.random() * 0.02;
         this.img = floresImgs[Math.floor(Math.random() * floresImgs.length)];
@@ -221,7 +239,7 @@ class Flor {
 
 // Crear partículas
 const flores = [];
-for(let i=0;i<5;i++) flores.push(new Flor());
+for(let i=0;i<10;i++) flores.push(new Flor());
 
 // Animación
 function animarFlores() {

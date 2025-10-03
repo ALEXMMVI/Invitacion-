@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: 'Great Vibes', cursive;
   font-style: italic;
-  background: linear-gradient(145deg, #ffffff, #f2f2f2);
+  background: linear-gradient(145deg, #c7c6c6,  rgb(255, 255, 255));
   overflow-x: hidden;
   color: #333;
   scroll-behavior: smooth;
@@ -275,4 +275,16 @@ body {
   height: 100%;
   z-index: -1; /* detrás del contenido */
   pointer-events: none; /* para no interferir con clicks */
+}
+.divisor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.divisor img {
+  max-width: 400px; /* Ajusta el tamaño del divisor */
+  width: 100%;       /* Se adapta a pantallas más pequeñas */
+  height: auto;
 }
