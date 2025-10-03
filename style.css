@@ -116,3 +116,36 @@ body {
     color: #505050; /* plateado oscuro */
     margin-top: 10px;
 }
+
+.form-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffffee;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.form-widget input {
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-family: 'Great Vibes', cursive;
+}
+.form-widget button {
+  background: silver;
+  color: #333;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-family: 'Great Vibes', cursive;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-widget button:hover {
+  background: #aaa;
+}

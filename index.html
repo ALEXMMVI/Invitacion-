@@ -59,7 +59,42 @@
   </div>
 </section>
 
-<!-- Confirmación de asistencia -->
+
+<section class="rsvp">
+  <h2>Confirma tu asistencia</h2>
+  <form action="https://docs.google.com/forms/u/0/d/1ciyuUMH4jdchymKCbKagJgpdQedO_DqL3WSp6aJhYr4/formResponse"
+   method="POST" 
+   target="hidden_iframe"
+   onsubmit="enviarConfirmacion();">
+
+ <input
+
+     type="text"
+      name="entry.1785022762" 
+      placeholder="Tu nombre" required>
+
+
+    <input type="submit" value="Confirmar asistencia">
+  </form>
+  <p>Tu respuesta se enviará y se guardará automáticamente.</p>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>"
+
+<p id="mensajeRVSP">
+</p>
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
 
 
 <script src="script.js"></script>
@@ -108,6 +143,7 @@ function actualizarContador() {
 // Actualiza cada segundo
 actualizarContador();
 setInterval(actualizarContador, 1000);
+//lista de invitados
 
 
 
