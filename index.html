@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,6 +13,7 @@
 
 </head>
 <body>
+<canvas id="fondoFlores"></canvas>
 
 <!-- Título principal con flores laterales -->
 <section class="welcome">
@@ -21,77 +23,79 @@
    
     <img src="lat1.1.png" class="flores-deco derecha" alt="Flor derecha">
   </h1>
-  <h2 class="titulo-principal">20</h2>
+
+
+  <p class=class="novios" style="font-family: 'Great Vibes', cursive; font-size:3.6rem; margin:10px 0;">25</p>
+
+  
+
   <!-- Nombres de los novios -->
-  <h2 class="titulo-principal">Ana & Isaac</h2>
+  <p class="novios" style="font-family: 'Great Vibes', cursive; font-size:3.6rem; margin:10px 0;">Ana & Isaac</p>
 
 
   <!-- Imagen principal -->
-  <div class="imagen-principal">
-    <img src="mick1.jpg" alt="Foto principal">
-  </div>
-
+ <div class="imagen-principal">
+  <img src="img1.jpg" alt="Foto principal">
+</div>
   <!-- Fecha centrada -->
-  <h1 class="nombres fade-up">14 de Octubre 2025</h1>
+ <div class="fecha-completa fecha-final">
+  <div class="dia-semana">Domingo</div>
+  <div class="numero-dia">21</div>
+  <div class="mes">Diciembre</div>
+   <div class="mes">2025</div>
+</div>
+
+ <!-- ESPACIO PARA UBICACIÓN POR ESCRITO -->
+  
+  <p class="lugar" style="font-family: 'Great Vibes', cursive; font-size:2rem; margin:10px 0;">
+    Lugar: Salón de Eventos: La estación Salón Jardín
+  </p>
+   
+<p class="hora" style="font-family: 'Great Vibes', cursive; font-size:2rem; margin:10px 0;">Hora: 19:00 hrs</p>
 
   <!-- Botón de ubicación -->
-  <div class="ubicacion fade-up">
-    <button onclick="abrirUbicacion()">Ver ubicación del local</button>
+  <div class="ubicacion ">
+    <button onclick="abrirUbicacion()">Ver ubicación en el mapa</button>
   </div>
 </section>
 
-<!-- Cuenta regresiva -->
-<section class="countdown fade-up">
-  <h2>Cuenta Regresiva</h2>
-  <div id="contador" class="contador-texto"></div>
-</section>
 
 <!-- Galería de recuerdos -->
 <section class="gallery fade-up">
   <h2>Recuerdos</h2>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="mask1.jpg" alt="Foto 1"></div>
-      <div class="swiper-slide"><img src="mask2.jpg" alt="Foto 2"></div>
-      <div class="swiper-slide"><img src="mick1.jpg" alt="Foto 3"></div>
+      <div class="swiper-slide"><img src="img1.jpg" alt="Foto 1"></div>
+      <div class="swiper-slide"><img src="img2.jpg" alt="Foto 2"></div>
+      <div class="swiper-slide"><img src="img3.jpg" alt="Foto 3"></div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
 </section>
+<!-- Cuenta regresiva -->
+<section class="countdown">
+  <h2>Cuenta Regresiva</h2>
+  <div id="contador" class="contador-texto"></div>
+</section>
 
 
-<section class="rsvp">
+<section class="rsvp fade-up">
   <h2>Confirma tu asistencia</h2>
-  <form action="https://docs.google.com/forms/u/0/d/1ciyuUMH4jdchymKCbKagJgpdQedO_DqL3WSp6aJhYr4/formResponse"
-   method="POST" 
-   target="hidden_iframe"
-   onsubmit="enviarConfirmacion();">
+  <form id="formAsistencia" 
+        action="https://docs.google.com/forms/u/0/d/1ciyuUMH4jdchymKCbKagJgpdQedO_DqL3WSp6aJhYr4/formResponse"
+        method="POST" 
+        target="hidden_iframe">
 
- <input
-
-     type="text"
-      name="entry.1785022762" 
-      placeholder="Tu nombre" required>
-
-
-    <input type="submit" value="Confirmar asistencia">
+    <input type="text" name="entry.1785022762" placeholder="Tu nombre" required>
+    <input type="number" name="entry.1955743454" placeholder="Cantidad de Asistentes" min="1" required>
+    <input type="submit" value="Confirmar asistencia" id="btnEnviar">
   </form>
-  <p>Tu respuesta se enviará y se guardará automáticamente.</p>
+  
+  <p id="mensajeRVSP" style="color: green; font-weight: bold; display: none;">
+    
+  </p>
 
-<iframe name="hidden_iframe" style="display:none;"></iframe>"
-
-<p id="mensajeRVSP">
-</p>
-
-
-
-
-
-
-
-
-
-
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 </section>
 
 
@@ -144,6 +148,92 @@ function actualizarContador() {
 actualizarContador();
 setInterval(actualizarContador, 1000);
 //lista de invitados
+
+const form = document.getElementById("formAsistencia");
+const mensaje = document.getElementById("mensajeRVSP");
+const boton = document.getElementById("btnEnviar");
+
+form.addEventListener("submit", function(e) {
+    // Cambia el botón y lo desactiva
+    boton.disabled = true;
+    boton.value = "Enviando...";
+
+    // Muestra el mensaje y cambia el botón a Enviado después de 1 segundo
+    setTimeout(() => {
+        mensaje.style.display = "block";
+        boton.value = "Enviado";
+    }, 1000);
+
+    // Nota: el formulario seguirá enviando los datos a Google Forms en el iframe
+});
+
+
+
+
+// Carga la imagen de la flor
+const canvas = document.getElementById('fondoFlores');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Cargar imágenes de flores
+const floresImgsSrc = ['flor1.png','lat1.png','lat1.1.png','lat2.png'];
+const floresImgs = floresImgsSrc.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
+// Clase Flor
+class Flor {
+    constructor() { this.reset(); }
+
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 100;
+        this.size = 20 + Math.random() * 30;
+        this.speed = 0.5 + Math.random() * 1;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = 0.01 + Math.random() * 0.02;
+        this.img = floresImgs[Math.floor(Math.random() * floresImgs.length)];
+    }
+
+    update() {
+        this.y -= this.speed;
+        this.angle += this.spin;
+        if(this.y + this.size < 0) this.reset();
+    }
+
+    draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.drawImage(this.img, -this.size/2, -this.size/2, this.size, this.size);
+        ctx.restore();
+    }
+}
+
+// Crear partículas
+const flores = [];
+for(let i=0;i<5;i++) flores.push(new Flor());
+
+// Animación
+function animarFlores() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    flores.forEach(f => { f.update(); f.draw(); });
+    requestAnimationFrame(animarFlores);
+}
+
+// Iniciar animación inmediatamente
+animarFlores();
+
+
 
 
 
