@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <title>Invitación de Aniversario</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -40,8 +42,21 @@
 
   <!-- Imagen principal -->
  <div class="imagen-principal">
-  <img src="img1.jpg" alt="Foto principal">
+  <img src="car1.jpeg" alt="Foto principal">
 </div>
+<!-- reprouctor de musica-->
+
+<!-- Reproductor de música -->
+<!-- Reproductor de música -->
+<div class="mini-player">
+  <button id="playPauseBtn" class="control">▶</button> <!-- inicia con icono play -->
+  <audio id="audioPlayer" loop>
+    <source src="Christina Aguilera - I Turn To You.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+
+
   <!-- Fecha centrada -->
  <div class="fecha-completa fecha-final">
   <div class="dia-semana">Domingo</div>
@@ -76,8 +91,8 @@
   <h2>Recuerdos</h2>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="img1.jpg" alt="Foto 1"></div>
-      <div class="swiper-slide"><img src="img2.jpg" alt="Foto 2"></div>
+      <div class="swiper-slide"><img src="car1.jpeg" alt="Foto 1"></div>
+      <div class="swiper-slide"><img src="car2.jpeg" alt="Foto 2"></div>
       <div class="swiper-slide"><img src="img3.jpg" alt="Foto 3"></div>
     </div>
     <div class="swiper-pagination"></div>
@@ -102,7 +117,7 @@
         method="POST" 
         target="hidden_iframe">
 
-    <input type="text" name="entry.1785022762" placeholder="Tu nombre" required>
+    <input type="text" name="entry.1785022762" placeholder="Tu nombre/Familia" required>
     <input type="number" name="entry.1955743454" placeholder="Cantidad de Asistentes" min="1" required>
     <input type="submit" value="Confirmar asistencia" id="btnEnviar">
   </form>
@@ -248,11 +263,26 @@ function animarFlores() {
     requestAnimationFrame(animarFlores);
 }
 
-// Iniciar animación inmediatamente
 animarFlores();
 
+//musica scrpt 
 
+const audio = document.getElementById('audioPlayer');
+const playPauseBtn = document.getElementById('playPauseBtn');
 
+// Inicialmente no está sonando
+let isPlaying = false;
+
+playPauseBtn.addEventListener('click', () => {
+  if(isPlaying){
+    audio.pause();
+    playPauseBtn.textContent = "▶"; // cambia a play
+  } else {
+    audio.play();
+    playPauseBtn.textContent = "⏸"; // cambia a pausa
+  }
+  isPlaying = !isPlaying;
+});
 
 
 
