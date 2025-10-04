@@ -185,20 +185,22 @@ setInterval(actualizarContador, 1000);
 const form = document.getElementById("formAsistencia");
 const mensaje = document.getElementById("mensajeRVSP");
 const boton = document.getElementById("btnEnviar");
+const iframe = document.querySelector("iframe[name='hidden_iframe']");
 
-form.addEventListener("submit", function(e) {
-    // Cambia el botón y lo desactiva
+form.addEventListener("submit", function() {
     boton.disabled = true;
     boton.value = "Enviando...";
+});
 
-    // Muestra el mensaje y cambia el botón a Enviado después de 1 segundo
-    setTimeout(() => {
+// Cuando el iframe termina de cargar (después de enviar)
+iframe.addEventListener("load", function() {
+    // Solo mostrar mensaje si se estaba enviando
+    if(boton.disabled){
         mensaje.style.display = "block";
         boton.value = "Enviado";
-    }, 1000);
-
-    // Nota: el formulario seguirá enviando los datos a Google Forms en el iframe
+    }
 });
+
 
 
 
