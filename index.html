@@ -313,10 +313,30 @@ playPauseBtn.addEventListener('click', () => {
     // Opcional: cambia ligeramente el ángulo para más realismo
     const angle = 90 + gamma / 2;
     document.body.style.background = 
-      `linear-gradient(${angle}deg, #dcdcdc 0%, #f5f5f5 40%, #bfbfbf 100%)`;
+       `linear-gradient(${angulo}deg, #b0b0b0 0%, #e8e8e8 25%, #9c9c9c 50%, #f2f2f2 75%, #6e6e6e 100%)`;
   });
 
+// iPhone → animación automática
+function iniciarReflejoAnimado() {
+  let angulo = 0;
+  setInterval(() => {
+    angulo = (angulo + 1) % 360;
+    const color1 = `hsl(${(angulo + 0) % 360}, 0%, 90%)`;
+    const color2 = `hsl(${(angulo + 60) % 360}, 0%, 70%)`;
+    const color3 = `hsl(${(angulo + 120) % 360}, 0%, 95%)`;
+    const color4 = `hsl(${(angulo + 180) % 360}, 0%, 60%)`;
+    const color5 = `hsl(${(angulo + 240) % 360}, 0%, 85%)`;
+    document.body.style.background =
+      `linear-gradient(${angulo}deg, ${color1} 0%, ${color2} 25%, ${color3} 50%, ${color4} 75%, ${color5} 100%)`;
+  }, 50); // 20fps
+}
 
+// Detectar dispositivo
+if (esIOS()) {
+  iniciarReflejoAnimado();
+} else {
+  iniciarReflejoInteractivo();
+}
 
 </script>
 
