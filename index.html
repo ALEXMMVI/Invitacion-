@@ -20,24 +20,31 @@
 <!-- Título principal con flores laterales -->
 <section class="welcome">
  
-  
-    <p class="titulo-texto" style="font-family: 'Great Vibes',  cursive;
-    color:#fbf7ee; ;font-size:3.8rem; margin:10px 0;">Aniversario</p>
+ <div class="titulo-imagen">
+  <img src="title2.png" alt="Aniversario 25">
+</div>
+
+<div class="titulo-num">
+  <img src="number1.png" alt="Aniversario 25">
+</div>
    
+
   
  
 
-
-  <p class=class="novios" style="font-family: 'Great Vibes', cursive;
-   color:#fbf7ee;font-size:3.6rem;; margin:10px 0;">25</p>
 
  <div class="divisor">
   <img src="title-Photoroom.png" alt="Divisor decorativo">
 </div>
 
   <!-- Nombres de los novios -->
-  <p class="novios" style="font-family: 'Great Vibes', cursive;
-  color:#fbf7ee; font-size:3.6rem; margin:10px 0;">Ana & Isaac</p>
+
+
+<div class="titulo-num">
+  <img src="name1.png" alt="Aniversario 25">
+</div>
+   
+
 
 
   <!-- Imagen principal -->
@@ -270,7 +277,7 @@ function animarFlores() {
     requestAnimationFrame(animarFlores);
 }
 
-animarFlores();
+//animarFlores();
 
 //musica scrpt 
 
@@ -291,7 +298,23 @@ playPauseBtn.addEventListener('click', () => {
   isPlaying = !isPlaying;
 });
 
+// Escucha el movimiento del dispositivo
+  window.addEventListener('deviceorientation', (e) => {
+    const gamma = e.gamma || 0; // inclinación izquierda/derecha
+    const beta = e.beta || 0;   // inclinación adelante/atrás
 
+    // Normalizamos el rango (gamma: -45 a 45, beta: 0 a 90 aprox)
+    const x = (gamma + 45) / 90; // 0 a 1
+    const y = (beta) / 90;       // 0 a 1
+
+    // Ajusta la posición del gradiente según el movimiento
+    document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+
+    // Opcional: cambia ligeramente el ángulo para más realismo
+    const angle = 90 + gamma / 2;
+    document.body.style.background = 
+      `linear-gradient(${angle}deg, #dcdcdc 0%, #f5f5f5 40%, #bfbfbf 100%)`;
+  });
 
 </script>
 
