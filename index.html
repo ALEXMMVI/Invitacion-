@@ -316,6 +316,34 @@ playPauseBtn.addEventListener('click', () => {
       `linear-gradient(${angle}deg, #dcdcdc 0%, #f5f5f5 40%, #bfbfbf 100%)`;
   });
 
+function iniciarReflejoAnimado() {
+  let angulo = 90;
+  let direccion = 1;
+
+  setInterval(() => {
+    angulo += 0.3 * direccion;
+
+    // Oscila entre 75° y 105° para un efecto suave
+    if (angulo > 105 || angulo < 75) direccion *= -1;
+
+    document.body.style.background = 
+      `linear-gradient(${angulo}deg, #dcdcdc 0%, #f5f5f5 40%, #bfbfbf 100%)`;
+  }, 60); // cada 60ms ≈ 16fps
+}
+
+// --- Detección de dispositivo ---
+function esIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent);
+}
+
+// --- Aplicar comportamiento adecuado ---
+if (esIOS()) {
+  iniciarReflejoAnimado(); // iPhone → animación automática
+} else {
+  iniciarReflejoInteractivo(); // Android → movimiento real
+}
+
+
 </script>
 
 </body>
