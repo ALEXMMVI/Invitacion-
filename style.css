@@ -24,7 +24,7 @@ body::before {
       rgba(0,0,0,0.05) 4px
     );
   mix-blend-mode: overlay;
-  opacity: 0.2;
+  opacity: 0.5;
   pointer-events: none;
   z-index: 0;
 }
@@ -59,6 +59,7 @@ h1 {
   display: inline-block;
   padding: 0 40px;
   font-size: 4.5rem;
+  
 }
 
 .flores-deco {
@@ -329,7 +330,7 @@ h1 {
 .divisor img {
   max-width: 400px; /* Ajusta el tamaño del divisor */
   width: 100%;       /* Se adapta a pantallas más pequeñas */
-
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
   height: auto;
 }
 
@@ -382,4 +383,15 @@ h1 {
 .titulo-num img {
   max-width: 90%;  /* el título más pequeño */
    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.titulo-div img {
+  max-width: 90%;  /* el título más pequeño */
+   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.titulo-decos img {
+  max-width: 95%;  /* el título más pequeño */
+   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+   
 }
