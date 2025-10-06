@@ -295,7 +295,14 @@ playPauseBtn.addEventListener('click', () => {
 
 function esIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent);
+
 }
+
+    const baseAngle = 115; // mismo ángulo base que el animado
+    document.body.style.backgroundSize = '200% 200%';
+    document.body.style.backgroundPosition = '50% 50%';
+    document.body.style.background =
+      `linear-gradient(${baseAngle}deg, #bfbfbf 0%, #f3f3f3 25%, #b8b8b8 50%, #f8f8f8 75%, #7c7c7c 100%)`;
 
 // Solo iniciar en NO-iOS
 if (!esIOS()) {
