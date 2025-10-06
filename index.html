@@ -323,7 +323,8 @@ function iniciarReflejoInteractivo() {
       const x = (gamma + 45) / 90;
       const y = beta / 90;
 
-      const angle = 90 + gamma / 2;
+      const angle = 115 + gamma / 2;
+      const angle = baseAngle + gamma / 3; // Pequeña variación según el giro
       document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
       document.body.style.background =
        document.body.style.background =
