@@ -2,13 +2,13 @@ body {
   margin: 0;
   font-family: 'Great Vibes', cursive;
   background: linear-gradient(135deg, #c0c0c0 0%, #fefefe 30%, #a0a0a0 50%, #f5f5f5 70%, #8d8d8d 100%);
-  background-size: cover;
+  background-size: 200% 200%;
   animation: reflejoPlata 6s linear infinite;
   color: #333;
   text-align: center;
   position: relative;
   overflow-x: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body::before {
