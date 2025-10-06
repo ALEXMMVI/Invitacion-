@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Great Vibes', cursive;
-  background: linear-gradient(135deg, #c0c0c0 0%, #fefefe 30%, #a0a0a0 50%, #f5f5f5 70%, #8d8d8d 100%);
+  background: linear-gradient(90deg, #bfbfbf 0%, #f3f3f3 25%, #b8b8b8 50%, #f8f8f8 75%, #7c7c7c 100%);
   background-size: cover;
   animation: reflejoPlata 6s linear infinite;
   color: #333;
@@ -10,6 +10,8 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
+
+
 
 body::before {
   content: "";
