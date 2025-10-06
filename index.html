@@ -315,42 +315,7 @@ playPauseBtn.addEventListener('click', () => {
     document.body.style.background = 
       `linear-gradient(${angle}deg, #dcdcdc 0%, #f5f5f5 40%, #bfbfbf 100%)`;
   });
-// Detectar si se necesita pedir permiso (solo iPhone/iPad)
-if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
-  // Crear un botón para pedir permiso
-  const botonPermiso = document.createElement("button");
-  botonPermiso.textContent = "Activar reflejos";
-  botonPermiso.style.position = "fixed";
-  botonPermiso.style.bottom = "20px";
-  botonPermiso.style.left = "50%";
-  botonPermiso.style.transform = "translateX(-50%)";
-  botonPermiso.style.padding = "10px 20px";
-  botonPermiso.style.borderRadius = "10px";
-  botonPermiso.style.border = "none";
-  botonPermiso.style.background = "#bfbfbf";
-  botonPermiso.style.color = "#333";
-  botonPermiso.style.fontFamily = "Playfair Display, serif";
-  botonPermiso.style.zIndex = "9999";
-  document.body.appendChild(botonPermiso);
 
-  botonPermiso.addEventListener("click", () => {
-    DeviceOrientationEvent.requestPermission()
-      .then((respuesta) => {
-        if (respuesta === "granted") {
-          iniciarReflejo();
-          botonPermiso.remove(); // quitar el botón
-        } else {
-          botonPermiso.textContent = "Permiso denegado";
-        }
-      })
-      .catch(() => {
-        botonPermiso.textContent = "No compatible";
-      });
-  });
-} else {
-  // Android u otros navegadores
-  iniciarReflejo();
-}
 </script>
 
 </body>
