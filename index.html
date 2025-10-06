@@ -297,6 +297,9 @@ playPauseBtn.addEventListener('click', () => {
   }
   isPlaying = !isPlaying;
 });
+// === REFLEJO DINÁMICO SOLO EN ANDROID ===
+
+// Detectar si es iPhone o iPad
 function esIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent);
 }
@@ -304,12 +307,12 @@ function esIOS() {
 // Android → reflejo que responde al movimiento
 function iniciarReflejoInteractivo() {
   if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
-    // iOS moderno pide permiso, Android no
+    // Algunos navegadores piden permiso
     DeviceOrientationEvent.requestPermission().catch(()=>{}).then(()=>{
       activarReflejo();
     });
   } else {
-    activarReflejo(); // Android u otros
+    activarReflejo(); // Android clásico
   }
   
   function activarReflejo() {
@@ -328,28 +331,10 @@ function iniciarReflejoInteractivo() {
   }
 }
 
-// iPhone → animación automática (sin sensores)
-function iniciarReflejoAnimado() {
-  let angulo = 0;
-  setInterval(() => {
-    angulo = (angulo + 1) % 360;
-    const color1 = `hsl(${(angulo + 0) % 360}, 0%, 80%)`;
-    const color2 = `hsl(${(angulo + 60) % 360}, 0%, 55%)`;
-    const color3 = `hsl(${(angulo + 120) % 360}, 0%, 88%)`;
-    const color4 = `hsl(${(angulo + 180) % 360}, 0%, 45%)`;
-    const color5 = `hsl(${(angulo + 240) % 360}, 0%, 70%)`;
-    document.body.style.background =
-      `linear-gradient(${angulo}deg, ${color1} 0%, ${color2} 25%, ${color3} 50%, ${color4} 75%, ${color5} 100%)`;
-  }, 50);
-}
-
-// Activar el modo correcto según dispositivo
-if (esIOS()) {
-  iniciarReflejoAnimado();
-} else {
+// Si NO es iPhone, activar reflejo dinámico
+if (!esIOS()) {
   iniciarReflejoInteractivo();
 }
-
 </script>
 
 </body>
