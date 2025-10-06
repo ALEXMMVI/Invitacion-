@@ -297,47 +297,45 @@ playPauseBtn.addEventListener('click', () => {
   }
   isPlaying = !isPlaying;
 });
-// === REFLEJO DINÁMICO SOLO EN ANDROID ===
+// === REFLEJO DINÁMICO SOLO EN ANDROID (CORREGIDO) ===
 
-// Detectar si es iPhone o iPad
 function esIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent);
 }
 
-// Android → reflejo que responde al movimiento
-function iniciarReflejoInteractivo() {
-  if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
-    // Algunos navegadores piden permiso
-    DeviceOrientationEvent.requestPermission().catch(()=>{}).then(()=>{
-      activarReflejo();
-    });
-  } else {
-    activarReflejo(); // Android clásico
-  }
-  
-  function activarReflejo() {
-    window.addEventListener("deviceorientation", (e) => {
-      const gamma = e.gamma || 0; // izquierda/derecha
-      const beta = e.beta || 0;   // adelante/atrás
-
-      const x = (gamma + 45) / 90;
-      const y = beta / 90;
-
-      const angle = 115 + gamma / 2;
-      const angle = baseAngle + gamma / 3; // Pequeña variación según el giro
-      document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
-      document.body.style.background =
-       document.body.style.background =
-  `linear-gradient(${angle}deg, #bfbfbf 0%, #f3f3f3 25%, #b8b8b8 50%, #f8f8f8 75%, #7c7c7c 100%)`;
-
-    });
-  }
-}
-
-// Si NO es iPhone, activar reflejo dinámico
+// Solo iniciar en NO-iOS
 if (!esIOS()) {
   iniciarReflejoInteractivo();
 }
+
+function iniciarReflejoInteractivo() {
+  if (!window.DeviceOrientationEvent) {
+    console.warn('DeviceOrientationEvent no disponible en este navegador');
+    return;
+  }
+
+  const baseAngle = 115; // inclinación diagonal fija (ajusta si quieres otro ángulo)
+
+  // Listener (passive para mejor rendimiento)
+  window.addEventListener('deviceorientation', (e) => {
+    const gamma = (typeof e.gamma === 'number') ? e.gamma : 0; // izquierda/derecha
+    const beta  = (typeof e.beta  === 'number') ? e.beta  : 0; // adelante/atrás
+
+    // Normalizar a 0..1
+    const x = (gamma + 45) / 90;
+    const y = beta / 90;
+
+    // Ángulo final = base + pequeña variación según giro
+    const angle = baseAngle + gamma / 3;
+
+    // Aplicar fondo (más grande para evitar repetición visible)
+    document.body.style.backgroundSize = '200% 200%';
+    document.body.style.backgroundPosition = `${50 + x * 50}% ${50 + y * 50}%`;
+    document.body.style.background =
+      `linear-gradient(${angle}deg, #bfbfbf 0%, #f3f3f3 25%, #b8b8b8 50%, #f8f8f8 75%, #7c7c7c 100%)`;
+  }, { passive: true });
+}
+
 </script>
 
 </body>
