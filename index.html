@@ -34,7 +34,7 @@
 
 
 <div class="titulo-num">
-  <img src="name1.png" alt="Aniversario 25">
+  <img src="anaisaac.png" alt="Aniversario 25">
 </div>
    
 
@@ -45,7 +45,9 @@
   <img src="caar1.png" alt="Foto principal">
 </div>
 <!-- reprouctor de musica-->
-
+<div class="titulo-cord">
+  <img src="cord.png" alt="Aniversario 25">
+</div>
 <!-- Reproductor de música -->
 <!-- Reproductor de música -->
 <div class="mini-player">
@@ -88,7 +90,7 @@
 
 <!-- Galería de recuerdos -->
 <section class="gallery ">
-  <h2>Recuerdos</h2>
+  <h2></h2>
   <div class="swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img src="car2.jpeg" alt="Foto 2"></div>
@@ -116,8 +118,14 @@
 </section>
 
 
+<div class="titulo-txt">
+  <img src="conrf.png" alt="Divisor decorativo">
+</div>
+
 <section class="rsvp fade-up">
-  <h2>Confirma tu asistencia</h2>
+  
+
+
   <form id="formAsistencia" 
         action="https://docs.google.com/forms/u/0/d/1ciyuUMH4jdchymKCbKagJgpdQedO_DqL3WSp6aJhYr4/formResponse"
         method="POST" 
@@ -330,6 +338,11 @@ function iniciarReflejoInteractivo() {
       `linear-gradient(${angle}deg, #bfbfbf 0%, #f3f3f3 25%, #b8b8b8 50%, #f8f8f8 75%, #7c7c7c 100%)`;
   }, { passive: true });
 }
+
+  if (!sessionStorage.getItem("paginaRecargada")) {
+    sessionStorage.setItem("paginaRecargada", "true");
+    location.reload();
+  }
 
 </script>
 

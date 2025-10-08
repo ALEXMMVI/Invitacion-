@@ -178,9 +178,9 @@ h1 {
 
 
 /* Galería Swiper */
-.swiper { width: 90%; max-width: 700px; aspect-ratio: 3/4 ; border-radius: 15px; overflow: hidden; margin: 0 auto; }
+.swiper { width: 90%; max-width: 700px; aspect-ratio: 3/4 ; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); border-radius: 15px; overflow: hidden; margin: 0 auto; }
 .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
-.swiper-pagination-bullet { background: #a0a0a0; opacity: 0.7; }
+.swiper-pagination-bullet { background: #a0a0a0; opacity: 0.7; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); }
 .swiper-pagination-bullet-active { background: #505050; }
 
 
@@ -394,6 +394,18 @@ h1 {
 
 .titulo-decos img {
   max-width: 95%;  /* el título más pequeño */
+   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+   
+}
+.titulo-txt img {
+  margin-top: 30px;
+  max-width: 70%;  /* el título más pequeño */
+   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+   
+}
+.titulo-cord img {
+  margin-top: 10px;
+  max-width: 100%;  /* el título más pequeño */
    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
    
 }
